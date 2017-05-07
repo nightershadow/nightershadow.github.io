@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IMDb 5000+</title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/font-awesome.css" rel="stylesheet" />
+    <link href="Content/myStyle.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+
+<!-- Barra do Topo -->
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><i class="fa fa-film" aria-hidden="true"></i> IMDb5000+</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pesquisa <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Pessoas</li>
+                            <li><a data-toggle="modal" data-target="#modalAtores">Atores</a></li>
+                            <li><a data-toggle="modal" data-target="#modalDiretores">Diretores</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Filmes</li>
+                            <li><a data-toggle="modal" data-target="#modalFilmes">Filmes</a></li>
+                            <li><a data-toggle="modal" data-target="#modalPaises">Países</a></li>
+                            <li><a data-toggle="modal" data-target="#modalGeneros">Generos</a></li>
+                            <li><a data-toggle="modal" data-target="#modalLinguas">Linguas</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#sobre">Sobre</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- Jumbotron -->
+<div class="container-fluid jumbobg" style="min-width: 1px;min-height:1px;width:100%;box-shadow: 0px 0px 15px #888888">
+        <div class="container">
+            <img src="./images/logo.png" style="height:100px;display: block;margin: auto;margin-top: 80px;align-self: center">
+            <hr class="my-2">
+            <h2 class="title" style="color:ghostwhite">Uma coleção dos 5000+ melhores filmes do IMDb</h2>
+        </div>
+    </div>
+
+</div>
+
+<!-- highlight de um ator e um filme aleatorio-->
+<div class="container-fluid" style="box-shadow: 0px 0px 15px #888888">
+<h1 style="text-align: center">Sugestões:</h1>
+<div class="container col-lg-6 col-md-6 col-sm-12 col-xs-12" data-bind="foreach: ator_aleatorio">
+    <div style="min-width: 1px;min-height:1px;height:200px;width:200px;border-radius:50%;display:block;margin:auto;margin-top:30px" data-bind="style: { background: 'url(' + photo + ') 50% 50% no-repeat' }"></div>
+    <br/>
+    <div style="text-align: center">
+        <a data-bind="attr: { href: './ator.html?id=' + actorID }"><h1 data-bind="text: actorName"></h1></a>
+        <h2 data-bind="text: actorFacebookLikes + ' Likes'"></h2>
+        <a class="btn btn-danger" data-toggle="modal" data-target="#modalFilmesHighlight">Filmes</a>
+    </div>
+</div>
+
+<div class="container col-lg-6 col-md-6 col-sm-12 col-xs-12" data-bind="foreach: filme_aleatorio">
+    <div style="min-width: 1px;min-height:1px;height:200px;width:200px;border-radius:50%;display:block;margin:auto;margin-top:30px" data-bind="style: { background: 'url(' + poster + ') 50% 50% no-repeat' }"></div>
+    <br/>
+    <div style="text-align: center">
+        <a data-bind="attr: { href: './filme.html?id=' + movieID }"><h1 data-bind="text: movie_title"></h1></a>
+        <h2 data-bind="text: imdb_score + '/10'"></h2>
+        <h2 data-bind="text: title_year"></h2>
+    </div>
+</div>      
+</div>
+
+<!-- Sobre -->
+<div id="sobre" class="container">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <h2 style="text-align: center">Estatisticas: </h2>
+        <br>
+        <h4 class="col-md-offset-2"> ▶ Atores: <span data-bind="text: atoresNumero"></span> </h4>
+        <h4 class="col-md-offset-2"> ▶ Diretores: <span data-bind="text: diretoresNumero"></span> </h4>
+        <h4 class="col-md-offset-2"> ▶ Filmes: <span data-bind="text: filmesNumero"></span> </h4>
+        <h4 class="col-md-offset-2"> ▶ Países: <span data-bind="text: paisesNumero"></span> </h4>
+        <h4 class="col-md-offset-2"> ▶ Generos: <span data-bind="text: generosNumero"></span> </h4>
+        <h4 class="col-md-offset-2"> ▶ Linguas: <span data-bind="text: linguasNumero"></span> </h4>
+
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <h2 style="text-align: center">Objetivo: </h2>
+        <br>
+        <h4 class="col-md-offset-2">O objetivo deste site é uma facil pesquisa e acesso a informações dos filmes/atores/diretores e categorias dos mesmos presentes no dataset IMDb5000+.<br>       
+        Este website foi produzido como projeto para a disciplina de ITW.</h4>
+    </div>
+</div>
+
+<!-- Footer -->
+
+<footer class="footer" style="padding-top:50px">
+      <div class="container">
+        <p class="text-muted"><i class="fa fa-circle-o-notch fa-spin" aria-hidden="true"></i> Now Loading Productions - ITW 2016</p>
+      </div>
+</footer>
+
+
+<!-- pesquisa de atores -->
+
+    <div id="modalAtores" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Pesquisa de Atores</h4>
+                </div>
+                <div class="modal-body">
+                    <p>A Base de Dados contem <span data-bind="text: atoresNumero"></span> atores.</p>
+                    <div class="col-md-8 col-md-offset-2 input-group">
+                        <span class="input-group-addon">Ator:</span>
+                        <input type="text" class="form-control" placeholder="Nome do Ator (3 ou mais letras)" data-bind="value: pesquisaAtoresTexto, valueUpdate: 'afterkeydown', event: { keyup: pesquisaAtores }"/>
+                    </div>
+                    <div class="col-md-4 col-md-offset-4" style="padding:10px 0px 10px 0px">
+                        <select id="ordenacaoAct" class="form-control">
+                            <option value="ALF" selected="true">Alfabéticamente</option>
+                            <option value="LIK">Gostos</option>
+                        </select>
+                    </div>
+                    <br/>
+                    <div class="row" data-bind="foreach: atores">
+                        <div class="col-md-6">
+                            <div><i class="fa fa-user"></i> <a data-bind="text: actorName, attr: { href: './ator.html?id=' + actorID }"></a></div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Pesquisa de Diretores -->
+
+    <div id="modalDiretores" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Pesquisa de Diretores</h4>
+                </div>
+                <div class="modal-body">
+                    <p>A Base de Dados contem <span data-bind="text: diretoresNumero"></span> diretores.</p>
+                    <div class="col-md-8 col-md-offset-2 input-group">
+                        <span class="input-group-addon">Diretor:</span>
+                        <input type="text" class="form-control" placeholder="Nome do Diretor (3 ou mais letras)" data-bind="value: pesquisaDiretoresTexto, valueUpdate: 'afterkeydown', event: { keyup: pesquisaDiretores }"/>
+                    </div>
+                    <div class="col-md-4 col-md-offset-4" style="padding:10px 0px 10px 0px">
+                        <select id="ordenacaoDir" class="form-control">
+                            <option value="ALF" selected="true">Alfabéticamente</option>
+                            <option value="LIK">Gostos</option>
+                        </select>
+                    </div>
+                    <br/>
+                    <div class="row" data-bind="foreach: diretores">
+                        <div class="col-md-6">
+                            <div><i class="fa fa-user-secret"></i> <a data-bind="text: directorName, attr: { href: './diretor.html?id=' + directorID }"></a></div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Pesquisa de Filmes -->
+
+    <div id="modalFilmes" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Pesquisa de Filmes</h4>
+                </div>
+                <div class="modal-body">
+                    <p>A Base de Dados contem <span data-bind="text: filmesNumero"></span> filmes.</p>
+                    <div class="col-md-8 col-md-offset-2 input-group">
+                        <span class="input-group-addon">Filme:</span>
+                        <input type="text" class="form-control" placeholder="Nome do Filme (3 ou mais letras)" data-bind="value: pesquisaFilmesTexto, valueUpdate: 'afterkeydown', event: { keyup: pesquisaFilmes }"/>
+                    </div>
+                    <div class="col-md-4 col-md-offset-4" style="padding:10px 0px 10px 0px">
+                        <select id="ordenacaoFil" class="form-control">
+                            <option value="ALF" selected="true">Alfabéticamente</option>
+                            <option value="BUD">Budget</option>
+                            <option value="GRO">Vendas</option>
+                        </select>
+                    </div>
+                    <br/>
+                    <div class="row" data-bind="foreach: filmes">
+                        <div class="col-md-6">
+                            <div><i class="fa fa-film"></i> <a data-bind="text: movie_title, attr: { href: './filme.html?id=' + movieID }"></a></div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Pesquisa de Países -->
+
+    <div id="modalPaises" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Pesquisa de Filmes por País</h4>
+                </div>
+                <div class="modal-body">
+                    <p>A Base de Dados contem <span data-bind="text: paisesNumero"></span> países.</p>
+                    <div class="col-md-8 col-md-offset-2 input-group">
+                        <span class="input-group-addon">País:</span>
+                        <input type="text" class="form-control" placeholder="Nome do País (3 ou mais letras)" data-bind="value: pesquisaPaisesTexto, valueUpdate: 'afterkeydown', event: { keyup: pesquisaPaises }"/>
+                    </div>
+                    <br/>
+                    <div class="row" data-bind="foreach: paises">
+                        <div class="col-md-6">
+                            <div><i class="fa fa-globe"></i> <a data-bind="text: countryName, attr: { href: './pais.html?id=' + countryID }"></a></div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Pesquisa de Generos -->
+
+    <div id="modalGeneros" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Pesquisa de Filmes por Genero</h4>
+                </div>
+                <div class="modal-body">
+                    <p>A Base de Dados contem <span data-bind="text: generosNumero"></span> generos.</p>
+                    <div class="col-md-8 col-md-offset-2 input-group">
+                        <span class="input-group-addon">Genero:</span>
+                        <input type="text" class="form-control" placeholder="Genero (3 ou mais letras)" data-bind="value: pesquisaGenerosTexto, valueUpdate: 'afterkeydown', event: { keyup: pesquisaGeneros }"/>
+                    </div>
+                    <br/>
+                    <div class="row" data-bind="foreach: generos">
+                        <div class="col-md-6">
+                            <div><i class="fa fa-rocket"></i> <a data-bind="text: genreName, attr: { href: './genero.html?id=' + genreID }"></a></div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Pesquisa de Linguas -->
+
+    <div id="modalLinguas" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Pesquisa de Filmes por Lingua</h4>
+                </div>
+                <div class="modal-body">
+                    <p>A Base de Dados contem <span data-bind="text: linguasNumero"></span> linguas.</p>
+                    <div class="col-md-8 col-md-offset-2 input-group">
+                        <span class="input-group-addon">Lingua:</span>
+                        <input type="text" class="form-control" placeholder="Lingua (3 ou mais letras)" data-bind="value: pesquisaLinguasTexto, valueUpdate: 'afterkeydown', event: { keyup: pesquisaLinguas }"/>
+                    </div>
+                    <br/>
+                    <div class="row" data-bind="foreach: linguas">
+                        <div class="col-md-6">
+                            <div><i class="fa fa-language"></i> <a data-bind="text: languageName, attr: { href: './lingua.html?id=' + languageID }"></a></div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Filmes do Ator Aleatorio -->
+
+<div id="modalFilmesHighlight" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Filmes: </h4>
+            </div>
+            <div class="modal-body" data-bind="foreach: ator_aleatorio">
+                <div class="row" data-bind="foreach: actor_movies">
+                    <div class="col-md-10 col-md-offset-1">
+                        <i class="fa fa-film"></i> <a data-bind="text: title_year + '&nbsp;&nbsp;&nbsp;&nbsp;' + imdb_score + '/10&nbsp;&nbsp;&nbsp;&nbsp;' + movie_title, attr: { href: './filme.html?id=' + movieID }"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript e JavaScript e JavaScript... -->
+
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/knockout-3.4.0.js"></script>
+    <script src="Scripts/indexScripts.js"></script>
+    
+</body>
+</html>
