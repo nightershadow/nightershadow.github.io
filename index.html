@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,45 +12,37 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
-
 <!-- Barra do Topo -->
-
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-toggleable-md navbar-light fixed-top bg-faded">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"><i class="fa fa-film" aria-hidden="true"></i> IMDb5000+</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pesquisa <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-header">Pessoas</li>
-                            <li><a data-toggle="modal" data-target="#modalAtores">Atores</a></li>
-                            <li><a data-toggle="modal" data-target="#modalDiretores">Diretores</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Filmes</li>
-                            <li><a data-toggle="modal" data-target="#modalFilmes">Filmes</a></li>
-                            <li><a data-toggle="modal" data-target="#modalPaises">Países</a></li>
-                            <li><a data-toggle="modal" data-target="#modalGeneros">Generos</a></li>
-                            <li><a data-toggle="modal" data-target="#modalLinguas">Linguas</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#sobre">Sobre</a></li>
-                </ul>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false"  aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+             </button>
+            <a class="navbar-brand" href="#"><i class="fa fa-film" aria-hidden="true"></i>IMDb5000+</a>
+            <div class="collapse navbar-collapse" id="navBar">
+                <nav class="navbar-nav mr-auto">
+                    <a class="nav-link active" href="#">Home</a>
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspop="true" aria-expanded="false" href="#">Pesquisa</a>
+                        <div class="dropdown-menu">
+                            <h6 class="dropdown-header">Pessoas</h6>
+                            <a class="dropdown-item" data-toggle="modal" data-target="#modalAtores" href="#">Atores</a>
+                            <a class="dropdown-item" data-toggle="modal" data-target="#modalDiretores" href="#">Diretores</a>
+                            <div class="dropdown-divider"></div>
+                            <h6 class="dropdown-header">Filmes</h6>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalFilmes">Filmes</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalPaises">Países</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalGeneros">Generos</a>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalLinguas">Linguas</a>
+                        </div>
+                    </div>
+                </nav>
+                <nav class="navbar-nav ">
+                    <a class="nav-link" href="#sobre">Sobre</a>
+                </nav>
             </div>
         </div>
     </nav>
-
 <!-- Jumbotron -->
 <div class="container-fluid jumbobg" style="min-width: 1px;min-height:1px;width:100%;box-shadow: 0px 0px 15px #888888">
         <div class="container">
@@ -65,7 +57,7 @@
 <!-- highlight de um ator e um filme aleatorio-->
 <div class="container-fluid" style="box-shadow: 0px 0px 15px #888888">
 <h1 style="text-align: center">Sugestões:</h1>
-<div class="container col-lg-6 col-md-6 col-sm-12 col-xs-12" data-bind="foreach: ator_aleatorio">
+<div class="container col-xl-6 col-lg-6 col-md-12 col-sm-12" data-bind="foreach: ator_aleatorio">
     <div style="min-width: 1px;min-height:1px;height:200px;width:200px;border-radius:50%;display:block;margin:auto;margin-top:30px" data-bind="style: { background: 'url(' + photo + ') 50% 50% no-repeat' }"></div>
     <br/>
     <div style="text-align: center">
@@ -75,7 +67,7 @@
     </div>
 </div>
 
-<div class="container col-lg-6 col-md-6 col-sm-12 col-xs-12" data-bind="foreach: filme_aleatorio">
+<div class="container col-xl-6 col-lg-6 col-md-12 col-sm-12" data-bind="foreach: filme_aleatorio">
     <div style="min-width: 1px;min-height:1px;height:200px;width:200px;border-radius:50%;display:block;margin:auto;margin-top:30px" data-bind="style: { background: 'url(' + poster + ') 50% 50% no-repeat' }"></div>
     <br/>
     <div style="text-align: center">
@@ -88,21 +80,21 @@
 
 <!-- Sobre -->
 <div id="sobre" class="container">
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
         <h2 style="text-align: center">Estatisticas: </h2>
         <br>
-        <h4 class="col-md-offset-2"> ▶ Atores: <span data-bind="text: atoresNumero"></span> </h4>
-        <h4 class="col-md-offset-2"> ▶ Diretores: <span data-bind="text: diretoresNumero"></span> </h4>
-        <h4 class="col-md-offset-2"> ▶ Filmes: <span data-bind="text: filmesNumero"></span> </h4>
-        <h4 class="col-md-offset-2"> ▶ Países: <span data-bind="text: paisesNumero"></span> </h4>
-        <h4 class="col-md-offset-2"> ▶ Generos: <span data-bind="text: generosNumero"></span> </h4>
-        <h4 class="col-md-offset-2"> ▶ Linguas: <span data-bind="text: linguasNumero"></span> </h4>
+        <h4 class="col-lg-offset-2"> ▶ Atores: <span data-bind="text: atoresNumero"></span> </h4>
+        <h4 class="col-lg-offset-2"> ▶ Diretores: <span data-bind="text: diretoresNumero"></span> </h4>
+        <h4 class="col-lg-offset-2"> ▶ Filmes: <span data-bind="text: filmesNumero"></span> </h4>
+        <h4 class="col-lg-offset-2"> ▶ Países: <span data-bind="text: paisesNumero"></span> </h4>
+        <h4 class="col-lg-offset-2"> ▶ Generos: <span data-bind="text: generosNumero"></span> </h4>
+        <h4 class="col-lg-offset-2"> ▶ Linguas: <span data-bind="text: linguasNumero"></span> </h4>
 
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
         <h2 style="text-align: center">Objetivo: </h2>
         <br>
-        <h4 class="col-md-offset-2">O objetivo deste site é uma facil pesquisa e acesso a informações dos filmes/atores/diretores e categorias dos mesmos presentes no dataset IMDb5000+.<br>       
+        <h4 class="col-lg-offset-2">O objetivo deste site é uma facil pesquisa e acesso a informações dos filmes/atores/diretores e categorias dos mesmos presentes no dataset IMDb5000+.<br>       
         Este website foi produzido como projeto para a disciplina de ITW.</h4>
     </div>
 </div>
@@ -127,11 +119,11 @@
                 </div>
                 <div class="modal-body">
                     <p>A Base de Dados contem <span data-bind="text: atoresNumero"></span> atores.</p>
-                    <div class="col-md-8 col-md-offset-2 input-group">
+                    <div class="col-lg-8 col-lg-offset-2 input-group">
                         <span class="input-group-addon">Ator:</span>
                         <input type="text" class="form-control" placeholder="Nome do Ator (3 ou mais letras)" data-bind="value: pesquisaAtoresTexto, valueUpdate: 'afterkeydown', event: { keyup: pesquisaAtores }"/>
                     </div>
-                    <div class="col-md-4 col-md-offset-4" style="padding:10px 0px 10px 0px">
+                    <div class="col-lg-4 col-lg-offset-4" style="padding:10px 0px 10px 0px">
                         <select id="ordenacaoAct" class="form-control">
                             <option value="ALF" selected="true">Alfabéticamente</option>
                             <option value="LIK">Gostos</option>
@@ -139,7 +131,7 @@
                     </div>
                     <br/>
                     <div class="row" data-bind="foreach: atores">
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div><i class="fa fa-user"></i> <a data-bind="text: actorName, attr: { href: './ator.html?id=' + actorID }"></a></div>
                             </div>
                         </div>
@@ -162,11 +154,11 @@
                 </div>
                 <div class="modal-body">
                     <p>A Base de Dados contem <span data-bind="text: diretoresNumero"></span> diretores.</p>
-                    <div class="col-md-8 col-md-offset-2 input-group">
+                    <div class="col-lg-8 col-lg-offset-2 input-group">
                         <span class="input-group-addon">Diretor:</span>
                         <input type="text" class="form-control" placeholder="Nome do Diretor (3 ou mais letras)" data-bind="value: pesquisaDiretoresTexto, valueUpdate: 'afterkeydown', event: { keyup: pesquisaDiretores }"/>
                     </div>
-                    <div class="col-md-4 col-md-offset-4" style="padding:10px 0px 10px 0px">
+                    <div class="col-lg-4 col-lg-offset-4" style="padding:10px 0px 10px 0px">
                         <select id="ordenacaoDir" class="form-control">
                             <option value="ALF" selected="true">Alfabéticamente</option>
                             <option value="LIK">Gostos</option>
@@ -174,7 +166,7 @@
                     </div>
                     <br/>
                     <div class="row" data-bind="foreach: diretores">
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div><i class="fa fa-user-secret"></i> <a data-bind="text: directorName, attr: { href: './diretor.html?id=' + directorID }"></a></div>
                             </div>
                         </div>
@@ -197,11 +189,11 @@
                 </div>
                 <div class="modal-body">
                     <p>A Base de Dados contem <span data-bind="text: filmesNumero"></span> filmes.</p>
-                    <div class="col-md-8 col-md-offset-2 input-group">
+                    <div class="col-lg-8 col-lg-offset-2 input-group">
                         <span class="input-group-addon">Filme:</span>
                         <input type="text" class="form-control" placeholder="Nome do Filme (3 ou mais letras)" data-bind="value: pesquisaFilmesTexto, valueUpdate: 'afterkeydown', event: { keyup: pesquisaFilmes }"/>
                     </div>
-                    <div class="col-md-4 col-md-offset-4" style="padding:10px 0px 10px 0px">
+                    <div class="col-lg-4 col-lg-offset-4" style="padding:10px 0px 10px 0px">
                         <select id="ordenacaoFil" class="form-control">
                             <option value="ALF" selected="true">Alfabéticamente</option>
                             <option value="BUD">Budget</option>
@@ -210,7 +202,7 @@
                     </div>
                     <br/>
                     <div class="row" data-bind="foreach: filmes">
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div><i class="fa fa-film"></i> <a data-bind="text: movie_title, attr: { href: './filme.html?id=' + movieID }"></a></div>
                             </div>
                         </div>
@@ -233,13 +225,13 @@
                 </div>
                 <div class="modal-body">
                     <p>A Base de Dados contem <span data-bind="text: paisesNumero"></span> países.</p>
-                    <div class="col-md-8 col-md-offset-2 input-group">
+                    <div class="col-lg-8 col-lg-offset-2 input-group">
                         <span class="input-group-addon">País:</span>
                         <input type="text" class="form-control" placeholder="Nome do País (3 ou mais letras)" data-bind="value: pesquisaPaisesTexto, valueUpdate: 'afterkeydown', event: { keyup: pesquisaPaises }"/>
                     </div>
                     <br/>
                     <div class="row" data-bind="foreach: paises">
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div><i class="fa fa-globe"></i> <a data-bind="text: countryName, attr: { href: './pais.html?id=' + countryID }"></a></div>
                             </div>
                         </div>
@@ -262,13 +254,13 @@
                 </div>
                 <div class="modal-body">
                     <p>A Base de Dados contem <span data-bind="text: generosNumero"></span> generos.</p>
-                    <div class="col-md-8 col-md-offset-2 input-group">
+                    <div class="col-lg-8 col-lg-offset-2 input-group">
                         <span class="input-group-addon">Genero:</span>
                         <input type="text" class="form-control" placeholder="Genero (3 ou mais letras)" data-bind="value: pesquisaGenerosTexto, valueUpdate: 'afterkeydown', event: { keyup: pesquisaGeneros }"/>
                     </div>
                     <br/>
                     <div class="row" data-bind="foreach: generos">
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div><i class="fa fa-rocket"></i> <a data-bind="text: genreName, attr: { href: './genero.html?id=' + genreID }"></a></div>
                             </div>
                         </div>
@@ -291,13 +283,13 @@
                 </div>
                 <div class="modal-body">
                     <p>A Base de Dados contem <span data-bind="text: linguasNumero"></span> linguas.</p>
-                    <div class="col-md-8 col-md-offset-2 input-group">
+                    <div class="col-lg-8 col-lg-offset-2 input-group">
                         <span class="input-group-addon">Lingua:</span>
                         <input type="text" class="form-control" placeholder="Lingua (3 ou mais letras)" data-bind="value: pesquisaLinguasTexto, valueUpdate: 'afterkeydown', event: { keyup: pesquisaLinguas }"/>
                     </div>
                     <br/>
                     <div class="row" data-bind="foreach: linguas">
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div><i class="fa fa-language"></i> <a data-bind="text: languageName, attr: { href: './lingua.html?id=' + languageID }"></a></div>
                             </div>
                         </div>
@@ -320,7 +312,7 @@
             </div>
             <div class="modal-body" data-bind="foreach: ator_aleatorio">
                 <div class="row" data-bind="foreach: actor_movies">
-                    <div class="col-md-10 col-md-offset-1">
+                    <div class="col-lg-10 col-lg-offset-1">
                         <i class="fa fa-film"></i> <a data-bind="text: title_year + '&nbsp;&nbsp;&nbsp;&nbsp;' + imdb_score + '/10&nbsp;&nbsp;&nbsp;&nbsp;' + movie_title, attr: { href: './filme.html?id=' + movieID }"></a>
                     </div>
                 </div>
